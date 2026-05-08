@@ -8,12 +8,24 @@ public static class Arrays
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Step 1: Create an array called multiples
+        // The array size should be equal to the length provided
+        double[] multiples = new double[length];
 
-        return []; // replace this return statement with your own
+        // Step 2: Use a loop to go through each position in the array
+        for (int i = 0; i < length; i++)
+        {
+            // Step 3: Find the multiple of the number
+            // Multiply the number by (i + 1)
+            // We use (i + 1) because array indexes start from 0
+            double result = number * (i + 1);
+
+            // Step 4: Store the result in the array
+            multiples[i] = result;
+        }
+
+        // Step 5: Return the completed array
+        return multiples;
     }
 
     /// <summary>
@@ -25,9 +37,35 @@ public static class Arrays
     /// </summary>
     public static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Step 1: Create a temporary list to store the rotated values
+        List<int> rotated = new List<int>();
+
+        // Step 2: Find the position where the rotation should start
+        // Example:
+        // If the list has 9 items and amount is 3
+        // 9 - 3 = 6
+        // So index 6 is where the last 3 items begin
+        int start = data.Count - amount;
+
+        // Step 3: Add the last 'amount' items to the temporary list first
+        for (int i = start; i < data.Count; i++)
+        {
+            rotated.Add(data[i]);
+        }
+
+        // Step 4: Add the remaining items from the beginning of the list
+        for (int i = 0; i < start; i++)
+        {
+            rotated.Add(data[i]);
+        }
+
+        // Step 5: Clear the original list
+        data.Clear();
+
+        // Step 6: Copy the rotated items back into the original list
+        foreach (int item in rotated)
+        {
+            data.Add(item);
+        }
     }
 }
