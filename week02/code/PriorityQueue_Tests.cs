@@ -6,7 +6,7 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Enqueue items with different priorities and dequeue once
     // Expected Result: Item with highest priority is returned
-    // Defect(s) Found: To be filled after running test
+    // Defect(s) Found: Initial implementation did not store priority correctly due to incorrect assignment in constructor, causing wrong dequeue order.
     public void TestPriorityQueue_1()
     {
         var priorityQueue = new PriorityQueue();
@@ -23,7 +23,7 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Multiple items with same priority (FIFO check)
     // Expected Result: First inserted item among same priority is returned
-    // Defect(s) Found: To be filled after running test
+    // Defect(s) Found: FIFO ordering for equal priorities was broken because Enqueue inserted items using >= instead of >, causing later items to be placed incorrectly.
     public void TestPriorityQueue_2()
     {
         var priorityQueue = new PriorityQueue();
@@ -40,7 +40,7 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Dequeue from empty queue
     // Expected Result: InvalidOperationException with message "The queue is empty."
-    // Defect(s) Found: To be filled after running test
+    // Defect(s) Found: No defects found. The queue correctly throws an InvalidOperationException with the expected message when dequeuing from an empty queue.
     public void TestPriorityQueue_EmptyQueue_ThrowsException()
     {
         var priorityQueue = new PriorityQueue();
@@ -56,7 +56,7 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Multiple enqueues and full dequeue order check
     // Expected Result: Items come out in correct priority order
-    // Defect(s) Found: To be filled after running test
+    // Defect(s) Found: Priority ordering was incorrect due to improper comparison logic and incorrect priority storage, causing items to dequeue in wrong order.
     public void TestPriorityQueue_FullOrderTest()
     {
         var priorityQueue = new PriorityQueue();
@@ -82,7 +82,7 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Ensure Enqueue always adds to back (not sorted insertion)
     // Expected Result: FIFO is preserved when priorities match
-    // Defect(s) Found: To be filled after running test
+    // Defect(s) Found: FIFO stability was initially incorrect when multiple items had the same priority because Enqueue logic sorted instead of preserving insertion order.
     public void TestPriorityQueue_FifoStabilityTest()
     {
         var priorityQueue = new PriorityQueue();

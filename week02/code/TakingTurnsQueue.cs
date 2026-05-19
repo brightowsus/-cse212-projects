@@ -21,14 +21,14 @@ public class TakingTurnsQueue
 
         Person current = _queue.Dequeue();
 
-        // Infinite turn case
+        // FIX: 0 OR negative = infinite
         if (current.Turns <= 0)
         {
             _queue.Enqueue(current);
             return current;
         }
 
-        // Finite turns case
+        // Finite turns
         current.Turns--;
 
         if (current.Turns > 0)
