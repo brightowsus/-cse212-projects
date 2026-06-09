@@ -78,11 +78,20 @@ public class BinarySearchTree : IEnumerable<int>
         }
     }
 
-    private void TraverseBackward(Node? node, List<int> values)
+private void TraverseBackward(Node? node, List<int> values)
+{
+    if (node is not null)
     {
-        // TODO Problem 3
-    }
+        // Go RIGHT first (largest values)
+        TraverseBackward(node.Right, values);
 
+        // Visit node
+        values.Add(node.Data);
+
+        // Go LEFT last (smallest values)
+        TraverseBackward(node.Left, values);
+    }
+}
     /// <summary>
     /// Get the height of the tree
     /// </summary>
